@@ -32,12 +32,6 @@ module.exports = {
       }
       return args
     })
-
-    // 移除 prefetch 插件
-    /**
-     * vue-cli3.0默认会在用户空闲时提前预加载一些将来可能会用到的资源，在移动端会消耗带宽，需要去掉
-     */
-    config.plugins.delete('prefetch')
     // 将原本处理svg的loader去除assets路径
     config.module.rule('images').test(/\.(png|jpe?g|gif|webp|svg)(\?.*)?$/)
     config.module.rule('images').exclude.add(resolve('src/assets/icons'))
@@ -59,7 +53,7 @@ module.exports = {
       // px2rem-loader需要在postcss-loader之前，要不然less的嵌套语法会报错
       .before('postcss-loader')
       .options({
-        remUnit: 75
+        remUnit: 37.5
       })
       .end()
       // 配置别名
