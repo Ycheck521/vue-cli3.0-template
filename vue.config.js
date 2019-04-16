@@ -2,6 +2,7 @@ const path = require('path')
 // 去console插件
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
+const svgoConfig = require('./src/utils/svgo.config')
 // 分析打包体积用
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const resolve = dir => path.resolve(__dirname, dir)
@@ -16,11 +17,20 @@ module.exports = {
   //   extract: false
   // },
   chainWebpack: (config) => {
+    config.module.rule('images').test(/\.(png|jpe?g|gif|webp|svg)(\?.*)?$/)
+    config.module.rule('images').exclude.add(resolve('src/assets/icons'))
     // 移除 prefetch 插件
     /**
      * vue-cli3.0默认会在用户空闲时提前预加载一些将来可能会用到的资源，在移动端会消耗带宽，需要去掉
      */
     config.plugins.delete('prefetch')
+    // 删除已有的svg-loader
+    const svgLoader = config.module.rule('svg')
+    svgLoader.uses.clear()
+    // 添加新的svg-loader
+    svgLoader.include.add(resolve('src/assets/icons'))
+    svgLoader.use('svg-sprite-loader').loader('svg-sprite-loader').options({ symbolId: 'icon-[name]' })
+    svgLoader.use('svgo-loader').loader('svgo-loader').options(svgoConfig)
     // 这里配置px2rem-loader
     config.module
       .rule('less')

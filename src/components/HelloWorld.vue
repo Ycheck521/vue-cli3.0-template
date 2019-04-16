@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <icon icon="xiaomishu" color="#000" size="28" />
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
