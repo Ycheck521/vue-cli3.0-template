@@ -1,49 +1,13 @@
+
 const path = require('path')
-// 去console插件
+const webpack = require('webpack')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 const svgoConfig = require('./src/utils/svgo.config')
+const CDN = require('./src/config/cdn')
 // 分析打包体积用
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const resolve = dir => path.resolve(__dirname, dir)
-
-// cdn预加载使用
-const externals = {
-  'vue': 'Vue',
-  'vue-router': 'VueRouter',
-  'vuex': 'Vuex',
-  'axios': 'axios',
-  'element-ui': 'ELEMENT',
-  'js-cookie': 'Cookies',
-  'nprogress': 'NProgress'
-}
-
-const cdn = {
-  // 开发环境
-  dev: {
-    css: [
-      'https://unpkg.com/element-ui/lib/theme-chalk/index.css',
-      'https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css'
-    ],
-    js: []
-  },
-  // 生产环境
-  build: {
-    css: [
-      'https://unpkg.com/element-ui/lib/theme-chalk/index.css',
-      'https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css'
-    ],
-    js: [
-      'https://cdn.bootcss.com/vue/2.5.21/vue.min.js',
-      'https://cdn.bootcss.com/vue-router/3.0.2/vue-router.min.js',
-      'https://cdn.bootcss.com/vuex/3.0.1/vuex.min.js',
-      'https://cdn.bootcss.com/axios/0.18.0/axios.min.js',
-      'https://unpkg.com/element-ui/lib/index.js',
-      'https://cdn.bootcss.com/js-cookie/2.2.0/js.cookie.min.js',
-      'https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js'
-    ]
-  }
-}
 
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
@@ -61,10 +25,10 @@ module.exports = {
      */
     config.plugin('html').tap(args => {
       if (process.env.NODE_ENV === 'production') {
-        args[0].cdn = cdn.build
+        args[0].cdn = CDN.cdn.build
       }
       if (process.env.NODE_ENV === 'development') {
-        args[0].cdn = cdn.dev
+        args[0].cdn = CDN.cdn.dev
       }
       return args
     })
@@ -104,6 +68,8 @@ module.exports = {
   },
   configureWebpack: config => {
     let plugins = [
+      new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
+      new webpack.NoEmitOnErrorsPlugin(),
       new UglifyJsPlugin({
         uglifyOptions: {
           compress: {
@@ -130,8 +96,10 @@ module.exports = {
     ]
     if (process.env.NODE_ENV !== 'development') {
       // 生产环境使用cdn，打包时不打包这些资源
-      config.externals = externals
+      config.externals = CDN.externals
       config.plugins = [...config.plugins, ...plugins]
     }
+  },
+  devServer: {
   }
 }
