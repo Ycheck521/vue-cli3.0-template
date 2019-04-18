@@ -85,7 +85,8 @@ module.exports = {
             }
           },
           sourceMap: false,
-          parallel: true
+          parallel: true,
+          cache: true
         }),
         new CompressionWebpackPlugin({
           filename: '[path].gz[query]',
@@ -97,7 +98,8 @@ module.exports = {
           ),
           threshold: 10240,
           minRatio: 0.8
-        })])
+        })
+      ])
     })
     config.optimization.runtimeChunk('single')
   },
