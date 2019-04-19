@@ -1,0 +1,171 @@
+@hd: 1px;  // 基本单位
+
+
+@white: #fff;
+@white-dark: #FAFAFA;
+
+@black: #1E1E1E;            // 正文文本颜色
+@gray: #555;
+@black-light: #888;
+@black-lighter: #bbb;
+@black-lighten: #EAEAEA;
+@black-lightest: #F4F4F4;
+
+
+@primary-lighten: #E8F0FD;  // 背景
+@primary-lighter: #ACCBFF;  // 边框
+@primary-light: #3F86F5;    // 背景
+@primary: #2671E6;          // 文字
+
+@danger-lighten: #FFECEC;   // 背景
+@danger-lighter: #FFB5B5;   // 边框
+@danger-light: #E95E56;     // 背景
+@danger: #D6342A;           // 文字
+
+@success-lighten: #E8F7EB;  // 背景
+@success-lighter: #92E1A2;  // 边框
+@success-light: #41BD5A;    // 背景
+@success: #36A64D;          // 文字
+
+@warn-lighten: #FFF2E0;     // 背景
+@warn-lighter: #FFCC86;     // 边框
+@warn-light: #FF9B0E;       // 背景
+@warn: #EF8C00;             // 文字
+
+// 间距
+// ---
+// 水平间距
+@h-spacing-sm: 5 * @hd;
+@h-spacing-md: 8 * @hd;
+@h-spacing-lg: 15 * @hd;
+
+// 内容边距
+@content-padding: 16 * @hd;
+@content-padding-left: @content-padding;
+
+// 圆角
+// ---
+@radius-xs: 4 * @hd;
+@radius-sm: 6 * @hd;
+@radius-md: 10 * @hd;
+@radius-lg: 14 * @hd;
+@radius-circle: 50%;
+
+//
+@text-color: @black;
+@text-placeholder-color: @black-lighter;
+@tip-color: @black-light;
+@label-color: @black-light;
+@border-color: @black-lighten;
+@loading-bg-color: @black-lighten;
+@disabled-color: @black-lighter;
+@disabled-bg-color: @white-dark;
+@bg-color: @black-lightest;
+
+@header-bgc: @white-dark;
+@tabbar-bgc: @white;
+@tabbar-badge-bgc: #FF514E;
+@tabbar-bgc-active: @white;
+@color-tabbar-active: @primary;
+@color-text: #1e1e1e;
+@color-border-1px: #ebebeb;
+
+/*======= button start =========*/
+@btn-height: 48 * @hd;
+@btn-font-size: 16 * @hd;
+@button-default-color: #656b79;
+@button-default-background-color: #f6f8fa;
+@button-default-box-shadow:  0 0 1px #b8bbbf;
+@button-default-plain-color: #5a5a5a;
+
+@button-primary-color: @white;
+@button-primary-background-color: @primary-light;
+
+@button-danger-color: @white;
+@button-danger-background-color: @danger-light;
+
+@button-success-color: @white;
+@button-success-background-color: @success-light;
+/*======= button end =========*/
+
+/*======= picker start =========*/
+@picker-title-color: @text-color;
+@picker-confirm-color: @primary;
+@picker-cancel-color: @black-light;
+/*======= modal end =========*/
+
+/*======= modal start =========*/
+@modal-bg-color: @white;
+@modal-title-color: @text-color;
+@modal-content-color: @black-light;
+@modal-btn-color: @gray;
+@modal-btn-active-color: @primary;
+@modal-btn-disable-color: @black-light;
+/*======= modal end =========*/
+
+/*======= actionSheet start =========*/
+@action-sheet-bg-color: @white;
+@action-sheet-title-color: lighten(@black, 20%);
+@action-sheet-color: @black-light;
+@action-sheet-primary-color: @primary-light;
+@action-sheet-danger-color: @danger-light;
+@action-sheet-cancel-color: @black-light;
+/*======= actionSheet end =========*/
+
+/*======= list start =========*/
+@list-item-line-height: 48 * @hd;
+@list-item-padding: 0 @content-padding;
+@list-item-padding-left: 16 * @hd;
+@list-item-padding-right: 16 * @hd;
+@list-item-bg-color: @white;
+@title-color: @gray;
+@desc-color: @black-light;
+
+/*======= list end =========*/
+
+/*======= tabs start =========*/
+@tab-active-color: @primary;
+@caret-color: @black-lighten;
+/*======= tabs end =========*/
+
+/*======= collapse start =========*/
+@collapse-active-bg-color: @primary-lighten;
+@caret-color: @black-lighten;
+/*======= tabs end =========*/
+
+/*======= upload start =========*/
+@upload-btn-color: @black-light;
+@upload-btn-bgc: @white;
+@upload-btn-active-bgc: @bg-color;
+@upload-btn-box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
+@upload-btn-border-color: @border-color;
+@upload-file-bgc: @white;
+@upload-file-remove-color: @white;
+@upload-file-remove-bgc: rgba(0, 0, 0, .7);
+@upload-file-state-bgc: rgba(37, 38, 45, .4);
+@upload-file-success-color: @success;
+@upload-file-error-color: @danger;
+@upload-file-status-bgc: @white;
+@upload-file-progress-color: @white;
+/*======= upload end =========*/
+
+/*======= switch start =========*/
+@switch-on-bgc: @success-light;
+@switch-off-bgc: @white;
+@switch-off-border-color: @black-lighten;
+/*======= switch end =========*/
+
+// animate
+@easeOutFunction: cubic-bezier(0.23, 1, 0.32, 1);
+@easeInOutFunction: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+
+// container
+@container-bg-primary: @white;
+
+/*
+* form 标签
+**/
+@form-field-height: 52 * @hd;
+@form-field-line-height: @form-field-height;
+@form-field-content-padding-left: @content-padding-left;

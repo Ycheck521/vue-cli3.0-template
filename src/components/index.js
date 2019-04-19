@@ -1,5 +1,8 @@
 import Lazyload from 'vue-lazyload'
 import Icon from './Icon'
+import TextField from './text-field'
+import SecurityCode from './security-code'
+import inputCode from './input-code'
 
 const install = (Vue) => {
   if (install.installed) {
@@ -7,7 +10,10 @@ const install = (Vue) => {
   }
   install.installed = true
   const components = [
-    Icon
+    Icon,
+    TextField,
+    SecurityCode,
+    inputCode
   ]
   components.forEach(component => {
     component.install(Vue)
