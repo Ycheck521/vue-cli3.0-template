@@ -3,8 +3,8 @@
     <img alt="Vue logo" src="../assets/logo.png">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
      <text-field v-model.trim="validCode" type="tel" maxlength="6" placeholder="请输入验证码"/>
-     <security-code v-model="validCode"></security-code>
-     <input-code span-size="20px" type="number" :number="6" height="40px" span-color="#000" input-color="#000" input-size="20px" :code="code" :get-input="getInput" :success="success"></input-code>
+     <security-code v-model="validCode" sideLength="60px" fontSize="20px"></security-code>
+     <!-- <input-code span-size="20px" type="number" :number="6" height="40px" span-color="#000" input-color="#000" input-size="20px" :code="code" :get-input="getInput" :success="success"></input-code> -->
   </div>
 </template>
 

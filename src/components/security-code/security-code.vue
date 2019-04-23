@@ -1,7 +1,7 @@
 <template>
   <section class="security-code-wrap">
     <ul ref="ul" class="security-code-container">
-      <li @click="handleClick(index)" class="field-wrap" v-for="(item, index) in number" :key="index">
+      <li :class="{current: index === inputCodeNum}" @click="handleClick(index)" class="field-wrap" v-for="(item, index) in number" :key="index">
         <i class="char-field">
           {{value[index] || placeholder}}
         </i>
@@ -49,6 +49,7 @@ export default {
   methods: {
     handleClick (index) {
       if (index < this.number) {
+        this.inputCodeNum = index
         this.inputCode = this.value[index]
         this.getDom(index)
       }
@@ -102,19 +103,6 @@ export default {
       this.handleSubmit()
     }
   }
-  // computed: {
-  //   inputLeft () {
-  //     return 1
-  //   },
-  //   inputCode: {
-  //     get: function () {
-  //       return this.value
-  //     },
-  //     set: function (newValue) {
-  //       this.value = newValue.replace(/[^\d]/g, '')
-  //     }
-  //   }
-  // }
 }
 </script>
 <style scoped lang="less">
@@ -142,24 +130,28 @@ export default {
    overflow: hidden;
  }
  .security-code-container {
- margin: 0;
- padding: 0;
- display: flex;
- justify-content: center;
- .field-wrap {
-  list-style: none;
-  display: block;
-  width: 80px;
-  height: 80px;
-  line-height: 80px;
-  font-size: 16px;
-  background-color: #fff;
-  margin: 2px;
-  color: #000;
-  .char-field {
-  font-style: normal;
-  font-size: 24px;
-  }
- }
+   margin: 0;
+   padding: 0;
+   display: flex;
+   justify-content: center;
+   .current {
+     border-color: yellow !important;
+   }
+   .field-wrap {
+     list-style: none;
+     display: block;
+     width: 80px;
+     height: 80px;
+     line-height: 80px;
+     font-size: 16px;
+     background-color: #fff;
+     margin: 2px;
+     color: #000;
+     border: 1px solid #000;
+     .char-field {
+       font-style: normal;
+       font-size: 24px;
+     }
+   }
  }
 </style>
