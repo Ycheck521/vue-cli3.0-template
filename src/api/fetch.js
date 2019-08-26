@@ -13,14 +13,6 @@ axios.interceptors.request.use(
     //     ...config.data
     //   })
     // }
-    // if (store.state.token) {
-    //   config.headers['x-access-token'] = store.state.token
-    // }
-    // if (config.url.indexOf('markData/report') < 0) {
-    //   config.headers['x-wejoydata-brand-name'] = store.state.userData.brandName
-    //   config.headers['x-wejoydata-source'] = store.state.markData.firstChannel || store.state.userData.source
-    //   config.headers['x-wejoydata-subSource'] = store.state.markData.subChannel || store.state.userData.subSource
-    // }
 
     // 追加时间戳，防止请求缓存问题
     config.url = config.url + (config.url.indexOf('?') !== -1 ? '&' : '?') + 't=' + Date.now()
